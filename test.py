@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import *
 import sys
 from SpotifyTracker import APImanager
 
+manager = APImanager()
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -343,8 +344,8 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addLayout(self.verticalLayout_3)
 
-        self.pushButton_4 = QPushButton(self.horizontalLayoutWidget)
-        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.buttonNextTrack = QPushButton(self.horizontalLayoutWidget)
+        self.buttonNextTrack.setObjectName(u"buttonNextTrack")
         palette11 = QPalette()
         palette11.setBrush(QPalette.Active, QPalette.Button, brush3)
         palette11.setBrush(QPalette.Active, QPalette.Base, brush3)
@@ -355,16 +356,16 @@ class Ui_MainWindow(object):
         palette11.setBrush(QPalette.Disabled, QPalette.Button, brush3)
         palette11.setBrush(QPalette.Disabled, QPalette.Base, brush3)
         palette11.setBrush(QPalette.Disabled, QPalette.Window, brush3)
-        self.pushButton_4.setPalette(palette11)
-        self.pushButton_4.setAutoFillBackground(False)
-        self.pushButton_4.setStyleSheet(u"background-color: rgb(76, 76, 76);\n"
+        self.buttonNextTrack.setPalette(palette11)
+        self.buttonNextTrack.setAutoFillBackground(False)
+        self.buttonNextTrack.setStyleSheet(u"background-color: rgb(76, 76, 76);\n"
             "border: none;")
         icon2 = QIcon()
         icon2.addFile(u"res/next_icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_4.setIcon(icon2)
-        self.pushButton_4.setIconSize(QSize(55, 55))
+        self.buttonNextTrack.setIcon(icon2)
+        self.buttonNextTrack.setIconSize(QSize(55, 55))
 
-        self.horizontalLayout.addWidget(self.pushButton_4)
+        self.horizontalLayout.addWidget(self.buttonNextTrack)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -373,9 +374,12 @@ class Ui_MainWindow(object):
         QMetaObject.connectSlotsByName(MainWindow)
 
         # button handling
-        # self.buttonPlayPause.clicked.connect(self.onPlayPauseClick)
-        # self.buttonPreviousTrack.clicked.connect(self.onPreviousTrackClick)
-        self.buttonNextTrack.clicked.connect(self.onNextTrackClick)
+        self.buttonPlayPause.clicked.connect(onPlayPauseClick)
+        self.buttonPreviousTrack.clicked.connect(onPreviousTrackClick)
+        self.buttonNextTrack.clicked.connect(onNextTrackClick)
+
+        # timer
+        self.labelTime.setText(datetime.datetime.now().strftime("Time: %H:%M:%S"))
     # setupUi
 
     def retranslateUi(self, MainWindow):
@@ -395,13 +399,16 @@ class Ui_MainWindow(object):
         self.label1.setText(QCoreApplication.translate("MainWindow", u"Current", None))
         self.buttonPreviousTrack.setText("")
         self.buttonPlayPause.setText("")
-        self.pushButton_4.setText("")
-    
+        self.buttonNextTrack.setText("")
 
+def onPlayPauseClick():
+    manager.playPause()
 
+def onPreviousTrackClick():
+    manager.previousTrack()
 
-
-manager = APImanager()
+def onNextTrackClick():
+    manager.nextTrack()
 
 # create pyqt5 window
 class MainWindow(QtWidgets.QMainWindow):

@@ -6,7 +6,7 @@ from spotipy.oauth2 import SpotifyOAuth
 
 class APImanager:
     def __init__(self):
-        scope = "user-read-currently-playing user-read-playback-state user-read-playback-position user-follow-read"
+        scope = "user-read-currently-playing user-read-playback-state user-read-playback-position user-follow-read user-modify-playback-state"
 
         username = 'OctaneMR'
         SPOTIPY_CLIENT_ID='70556e1830db4dd687adce562f4b9124'
@@ -19,7 +19,6 @@ class APImanager:
 # returns current track name
     def getCurrentTrack(self):
         results = self.sp.current_playback()
-        print(results)
         if results is not None:
             item = results['item']
             return item['name']
@@ -45,8 +44,24 @@ class APImanager:
             return artist['name']
         else:
             return None
+    
+    def nextTrack(self):
+        self.sp.next_track()
+    
+    def previousTrack(self):
+        self.sp.previous_track()
+        
+    def isPlaying(self):
+        results = self.sp.current_playback()
+        return results["is_playing"]
+    
+    def playPause(self):
+        if self.isPlaying():
+            self.sp.pause_playback()
+        else:
+            self.sp.start_playback()
 
 test = APImanager()
-print(test.getCurrentArtist())
+
 
     

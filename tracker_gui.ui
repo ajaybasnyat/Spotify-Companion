@@ -249,8 +249,12 @@
       <x>420</x>
       <y>10</y>
       <width>331</width>
-      <height>561</height>
+      <height>571</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none;
+background-color: rgb(85, 255, 127);</string>
     </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
@@ -833,7 +837,7 @@
      <rect>
       <x>10</x>
       <y>550</y>
-      <width>79</width>
+      <width>141</width>
       <height>21</height>
      </rect>
     </property>
@@ -939,13 +943,13 @@
      <bool>false</bool>
     </property>
     <property name="text">
-     <string>Time</string>
+     <string>Session Time</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTime">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>200</x>
       <y>546</y>
       <width>81</width>
       <height>29</height>
@@ -1105,7 +1109,7 @@
       <number>12</number>
      </property>
      <item>
-      <widget class="QPushButton" name="pushButton_5">
+      <widget class="QPushButton" name="buttonPreviousTrack">
        <property name="palette">
         <palette>
          <active>
@@ -1225,10 +1229,10 @@ border: none;</string>
         <number>12</number>
        </property>
        <item>
-        <widget class="QGraphicsView" name="graphicAlbumArt"/>
+        <widget class="QGraphicsView" name="graphicCoverArt"/>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="buttonPlayPause">
          <property name="palette">
           <palette>
            <active>
@@ -1345,7 +1349,7 @@ border: none;</string>
       </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="buttonNextTrack">
        <property name="palette">
         <palette>
          <active>
@@ -1442,7 +1446,11 @@ border: none;</string>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(76, 76, 76);
-border: none;</string>
+border: none;
+
+QPushButton::hover {
+                             background-color : lightgreen;
+                        }</string>
        </property>
        <property name="text">
         <string/>
