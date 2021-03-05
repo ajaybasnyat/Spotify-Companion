@@ -2,36 +2,31 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+from PyQt5 import uic
 import sys
 from SpotifyTracker import APImanager
+from Thread import Thread
+
 
 manager = APImanager()
-
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        if not MainWindow.objectName():
-            MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(758, 589)
-        self.centralwidget = QWidget(MainWindow)
-        self.centralwidget.setObjectName(u"centralwidget")
-        self.b1 = QtWidgets.QPushButton(self.centralwidget)
-        self.b1.clicked.connect(onClick)
-
-def onClick():
-        print(manager.cu
-    
+form, base = uic.loadUiType("test.ui")
 
 # create pyqt5 window
-class MainWindow(QtWidgets.QMainWindow):
-    def __init__(self, parent=None):
-        super(MainWindow, self).__init__(parent=parent)
-        ui = Ui_MainWindow()
-        ui.setupUi(self)
+class Test(base, form):
+    def __init__(self):
+        super(base, self).__init__()
+        self.setupUi(self)
+        self.thread = Thread()
+        self.thread.newTrack.connect(self.updateLabel)  
+        self.thread.start()
+    def updateLabel(self, track):
+        self.label.setText(track)
 
 # run application
 if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    w = MainWindow()
+    app = QApplication(sys.argv)
+    w = Test()
     w.show()
     sys.exit(app.exec_())
+
 

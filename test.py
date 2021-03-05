@@ -2,12 +2,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+from Thread import Thread
 import sys
 from SpotifyTracker import APImanager
 
 manager = APImanager()
 
 class Ui_MainWindow(object):
+    
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -378,8 +380,11 @@ class Ui_MainWindow(object):
         self.buttonPreviousTrack.clicked.connect(onPreviousTrackClick)
         self.buttonNextTrack.clicked.connect(onNextTrackClick)
 
-        # timer
-        self.labelTime.setText(datetime.datetime.now().strftime("Time: %H:%M:%S"))
+        
+
+
+        
+
     # setupUi
 
     def retranslateUi(self, MainWindow):
@@ -400,6 +405,9 @@ class Ui_MainWindow(object):
         self.buttonPreviousTrack.setText("")
         self.buttonPlayPause.setText("")
         self.buttonNextTrack.setText("")
+    
+    def updateCurrentTrack(self, newTrack):
+        self.labelCurrentTrack.setText(newTrack)
 
 def onPlayPauseClick():
     manager.playPause()
@@ -416,6 +424,13 @@ class MainWindow(QtWidgets.QMainWindow):
         super(MainWindow, self).__init__(parent=parent)
         ui = Ui_MainWindow()
         ui.setupUi(self)
+        ui.thread = Thread()
+        # self.workerThread = QtCore.QThread()
+        # self.workerThread.started.connect(self.thread.run)
+        ui.thread.newTrack.connect(ui.updateCurrentTrack)  # Connect your signals/slots
+        # self.thread.moveToThread(self.workerThread)  # Move the Worker object to the Thread object
+        ui.thread.start()
+        
 
 # run application
 if __name__ == "__main__":
@@ -423,4 +438,5 @@ if __name__ == "__main__":
     w = MainWindow()
     w.show()
     sys.exit(app.exec_())
+    
 
