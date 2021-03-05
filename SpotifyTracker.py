@@ -60,8 +60,20 @@ class APImanager:
             self.sp.pause_playback()
         else:
             self.sp.start_playback()
+    
+    def getCoverArt(self):
+        results = self.sp.current_playback()
+        item = results['item']
+        album = item['album']
+        images = album['images']
+        return images[1]['url']
+
+    # def getPlayback(self):
+    #     return self.sp.current_playback()
+
 
 test = APImanager()
+print(test.getCoverArt())
 
 
     

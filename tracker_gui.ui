@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>758</width>
-    <height>589</height>
+    <width>832</width>
+    <height>590</height>
    </rect>
   </property>
   <property name="palette">
@@ -246,7 +246,7 @@
    <widget class="QListView" name="listTrackHistory">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>490</x>
       <y>10</y>
       <width>331</width>
       <height>571</height>
@@ -388,7 +388,7 @@ background-color: rgb(85, 255, 127);</string>
      <rect>
       <x>180</x>
       <y>286</y>
-      <width>241</width>
+      <width>301</width>
       <height>61</height>
      </rect>
     </property>
@@ -556,7 +556,7 @@ background-color: rgb(85, 255, 127);</string>
      <rect>
       <x>180</x>
       <y>366</y>
-      <width>241</width>
+      <width>301</width>
       <height>61</height>
      </rect>
     </property>
@@ -1229,7 +1229,11 @@ border: none;</string>
         <number>12</number>
        </property>
        <item>
-        <widget class="QGraphicsView" name="graphicCoverArt"/>
+        <widget class="QLabel" name="labelCoverArt">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="buttonPlayPause">
