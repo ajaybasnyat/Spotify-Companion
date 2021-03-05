@@ -405,7 +405,7 @@ background-color: rgb(85, 255, 127);</string>
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -418,7 +418,7 @@ background-color: rgb(85, 255, 127);</string>
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -573,7 +573,7 @@ background-color: rgb(85, 255, 127);</string>
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -586,7 +586,7 @@ background-color: rgb(85, 255, 127);</string>
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -951,7 +951,7 @@ background-color: rgb(85, 255, 127);</string>
      <rect>
       <x>200</x>
       <y>546</y>
-      <width>81</width>
+      <width>261</width>
       <height>29</height>
      </rect>
     </property>
@@ -962,7 +962,7 @@ background-color: rgb(85, 255, 127);</string>
      </font>
     </property>
     <property name="text">
-     <string>time</string>
+     <string/>
     </property>
    </widget>
    <widget class="QProgressBar" name="trackPopularity">

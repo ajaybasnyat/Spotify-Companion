@@ -78,7 +78,7 @@ class APImanager:
 
 
 test = APImanager()
-print(test.getTrackPopularity())
+print(test.isPlaying())
 
 
     

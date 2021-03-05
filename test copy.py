@@ -20,7 +20,11 @@ class Test(base, form):
         self.thread = Thread()
         self.thread.newTrack.connect(self.updateCurrentTrack)  
         self.thread.newArtist.connect(self.updateCurrentArtist)
+        self.thread.prevTrack.connect(self.updatePreviousTrack)
+        self.thread.prevArtist.connect(self.updatePreviousArtist)
         self.thread.newCoverArt.connect(self.updateCoverArt)
+        self.thread.newTrackPopularity.connect(self.updateTrackPopularity)
+        self.thread.newSessionTime.connect(self.updateSessionTime)
         self.thread.start()
 
         # button handling
@@ -28,10 +32,14 @@ class Test(base, form):
         self.buttonPreviousTrack.clicked.connect(onPreviousTrackClick)
         self.buttonNextTrack.clicked.connect(onNextTrackClick)
 
-    def updateCurrentTrack(self, track):
-        self.labelCurrentTrack.setText(track)
-    def updateCurrentArtist(self, artist):
-        self.labelCurrentArtist.setText(artist)
+    def updateCurrentTrack(self, currentTrack):
+        self.labelCurrentTrack.setText(currentTrack)
+    def updateCurrentArtist(self, currentArtist):
+        self.labelCurrentArtist.setText(currentArtist)
+    def updatePreviousTrack(self, previousTrack):
+        self.labelPreviousTrack.setText(previousTrack)
+    def updatePreviousArtist(self, previousArtist):
+        self.labelPreviousArtist.setText(previousArtist)
     def updateCoverArt(self, coverArt):
         coverArtImage = QImage()
         # coverArtImage.loadFromData(requests.get(coverArt).content)
@@ -42,6 +50,8 @@ class Test(base, form):
         self.labelCoverArt.setPixmap(pixmap2)
     def updateTrackPopularity(self, trackPopularity):
         self.trackPopularity.setValue(trackPopularity)
+    def updateSessionTime(self, timeString):
+        self.labelTime.setText(timeString)
 def onPlayPauseClick():
     manager.playPause()
 
