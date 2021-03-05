@@ -7,6 +7,7 @@ class Thread(QtCore.QThread):
     newTrack = pyqtSignal(str)
     newArtist = pyqtSignal(str)
     newCoverArt = pyqtSignal(str)
+    newTrackPopularity = pyqtSignal(int)
     manager = APImanager()
 
     def __init__(self,):
@@ -17,7 +18,9 @@ class Thread(QtCore.QThread):
             track = self.manager.getCurrentTrack()
             artist = self.manager.getCurrentArtist()
             coverArt = self.manager.getCoverArt()
+            trackPopularity = self.manager.getTrackPopularity()
             self.newTrack.emit(track)
             self.newArtist.emit(artist)
             self.newCoverArt.emit(coverArt)
+            self.newTrackPopularity.emit(trackPopularity)
             time.sleep(5)

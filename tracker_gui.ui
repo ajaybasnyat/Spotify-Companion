@@ -965,7 +965,7 @@ background-color: rgb(85, 255, 127);</string>
      <string>time</string>
     </property>
    </widget>
-   <widget class="QProgressBar" name="progressBar">
+   <widget class="QProgressBar" name="trackPopularity">
     <property name="geometry">
      <rect>
       <x>200</x>

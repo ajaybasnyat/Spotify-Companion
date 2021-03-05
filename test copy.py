@@ -38,8 +38,10 @@ class Test(base, form):
         # self.labelCoverArt.setPixmap(QPixmap(coverArtImage))
         coverArtImage.loadFromData(requests.get(coverArt).content)
         pixmap = QPixmap(coverArtImage)
-        pixmap2 = pixmap.scaledToHeight(200)
+        pixmap2 = pixmap.scaledToHeight(180)
         self.labelCoverArt.setPixmap(pixmap2)
+    def updateTrackPopularity(self, trackPopularity):
+        self.trackPopularity.setValue(trackPopularity)
 def onPlayPauseClick():
     manager.playPause()
 

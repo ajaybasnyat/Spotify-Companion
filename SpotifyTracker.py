@@ -67,13 +67,18 @@ class APImanager:
         album = item['album']
         images = album['images']
         return images[1]['url']
+    
+    def getTrackPopularity(self):
+        results = self.sp.current_playback()
+        item = results['item']
+        return item['popularity']
 
     # def getPlayback(self):
     #     return self.sp.current_playback()
 
 
 test = APImanager()
-print(test.getCoverArt())
+print(test.getTrackPopularity())
 
 
     
