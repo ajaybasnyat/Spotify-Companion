@@ -6,7 +6,7 @@ from spotipy.oauth2 import SpotifyOAuth
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+
 # create API handler to manager API calls
 class APIHandler:
     def __init__(self):
@@ -17,10 +17,11 @@ class APIHandler:
         scope += " user-follow-read" 
         scope += " user-modify-playback-state"
 
-        
+        # load environmental variables for api keys
+        load_dotenv()
         # spotify account username
         SPOTIFY_USERNAME = os.environ.get('SPOTIFY_USERNAME')
-        # spotify application id and secret (hidden)
+        # spotify application id and secret
         SPOTIPY_CLIENT_ID = os.environ.get('SPOTIPY_CLIENT_ID')
         SPOTIPY_CLIENT_SECRET = os.environ.get('SPOTIPY_CLIENT_SECRET')
         # redirect url
