@@ -3,6 +3,7 @@ import sys
 import spotipy.util as util
 import time
 from spotipy.oauth2 import SpotifyOAuth
+import os
 
 # create API handler to manager API calls
 class APIHandler:
@@ -14,11 +15,14 @@ class APIHandler:
         scope += " user-follow-read" 
         scope += " user-modify-playback-state"
 
+        os.environ['username'] = 'OctaneMR'
+        os.environ['SPOTIPY_CLIENT_ID'] = '70556e1830db4dd687adce562f4b9124'
+        os.environ['SPOTIPY_CLIENT_SECRET'] = 'b6d2a399476e496ba1f27fd7bdbd0c4f'
         # spotify account username
-        username = 'OctaneMR'
+        username = os.environ.get('username')
         # spotify application id and secret (hidden)
-        SPOTIPY_CLIENT_ID='70556e1830db4dd687adce562f4b9124'
-        SPOTIPY_CLIENT_SECRET='b6d2a399476e496ba1f27fd7bdbd0c4f'
+        SPOTIPY_CLIENT_ID = os.environ.get('SPOTIPY_CLIENT_ID')
+        SPOTIPY_CLIENT_SECRET = os.environ.get('SPOTIPY_CLIENT_SECRET')
         # redirect url
         SPOTIPY_REDIRECT_URI='http://localhost/'
         # create token for application access
