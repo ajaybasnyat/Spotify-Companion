@@ -4,10 +4,9 @@ import spotipy.util as util
 import time
 from spotipy.oauth2 import SpotifyOAuth
 import os
+from dotenv import load_dotenv
 
-os.environ['username'] = 'OctaneMR'
-os.environ['SPOTIPY_CLIENT_ID'] = '70556e1830db4dd687adce562f4b9124'
-os.environ['SPOTIPY_CLIENT_SECRET'] = 'b6d2a399476e496ba1f27fd7bdbd0c4f'
+load_dotenv()
 # create API handler to manager API calls
 class APIHandler:
     def __init__(self):
@@ -20,14 +19,14 @@ class APIHandler:
 
         
         # spotify account username
-        username = os.environ.get('username')
+        SPOTIFY_USERNAME = os.environ.get('SPOTIFY_USERNAME')
         # spotify application id and secret (hidden)
         SPOTIPY_CLIENT_ID = os.environ.get('SPOTIPY_CLIENT_ID')
         SPOTIPY_CLIENT_SECRET = os.environ.get('SPOTIPY_CLIENT_SECRET')
         # redirect url
         SPOTIPY_REDIRECT_URI='http://localhost/'
         # create token for application access
-        token = util.prompt_for_user_token(username,scope,client_id=SPOTIPY_CLIENT_ID,client_secret=SPOTIPY_CLIENT_SECRET,redirect_uri=SPOTIPY_REDIRECT_URI)
+        token = util.prompt_for_user_token(SPOTIFY_USERNAME,scope,client_id=SPOTIPY_CLIENT_ID,client_secret=SPOTIPY_CLIENT_SECRET,redirect_uri=SPOTIPY_REDIRECT_URI)
         self.sp = spotipy.Spotify(auth=token)
 
 # returns current track name
