@@ -5,6 +5,9 @@ import time
 from spotipy.oauth2 import SpotifyOAuth
 import os
 
+os.environ['username'] = 'OctaneMR'
+os.environ['SPOTIPY_CLIENT_ID'] = '70556e1830db4dd687adce562f4b9124'
+os.environ['SPOTIPY_CLIENT_SECRET'] = 'b6d2a399476e496ba1f27fd7bdbd0c4f'
 # create API handler to manager API calls
 class APIHandler:
     def __init__(self):
@@ -15,9 +18,7 @@ class APIHandler:
         scope += " user-follow-read" 
         scope += " user-modify-playback-state"
 
-        os.environ['username'] = 'OctaneMR'
-        os.environ['SPOTIPY_CLIENT_ID'] = '70556e1830db4dd687adce562f4b9124'
-        os.environ['SPOTIPY_CLIENT_SECRET'] = 'b6d2a399476e496ba1f27fd7bdbd0c4f'
+        
         # spotify account username
         username = os.environ.get('username')
         # spotify application id and secret (hidden)
